@@ -37,7 +37,7 @@ public class Tarea implements Runnable {
 			} catch (InterruptedException e) {
 				System.out.println(e);
 			}
-
+			//System.out.println("Servers avalaible: " + this.smphre.availablePermits());
 			System.out.println("Running Thread " + value + " time: " + this.tiempoTarea);
 		} catch (InterruptedException e) {
 			System.out.println(e);
