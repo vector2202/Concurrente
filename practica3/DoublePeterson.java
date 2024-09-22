@@ -28,8 +28,8 @@ public class DoublePeterson {
 	public void lock() {
 		Thread currentThread = Thread.currentThread();
 		long id = currentThread.getId();
-		int me = map_thread(id);
-		//int me = (int) (id % 4);
+		//int me = map_thread(id);
+		int me = (int) (id % 4);
 		//System.out.println("ID" + id + " maps to "+ me);
 		if (me == 0 || me == 1) {
 			lock1.lock();
@@ -43,8 +43,8 @@ public class DoublePeterson {
 	public void unlock() {
 		Thread currentThread = Thread.currentThread();
 		long id = currentThread.getId();
-		int me = map_thread(id);
-		//int me = (int) (id % 4);
+		//int me = map_thread(id);
+		int me = (int) (id % 4);
 		if (me == 0 || me == 1) {
 			lock1.unlock();
 		} else if (me == 2 || me == 3) {

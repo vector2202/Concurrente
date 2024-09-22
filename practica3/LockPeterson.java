@@ -8,10 +8,10 @@ public class LockPeterson {
 	private static void task(DoublePeterson lock, CounterNaive counter) {
 		try {
 			lock.lock();
-			//Thread currentThread = Thread.currentThread();
-			//long id = currentThread.getId() - 20;
-			//int i = (int) (id % 4);
-			//counter_threads[i]++;
+			Thread currentThread = Thread.currentThread();
+			long id = currentThread.getId() - 20;
+			int i = (int) (id % 4);
+			counter_threads[i]++;
 			counter.increment();
 			//if (id > 24 || id < 20) {
 			//	System.out.println("IDDDD:" + id);
@@ -41,7 +41,7 @@ public class LockPeterson {
 			Thread.sleep(500);
 			System.out.println("Valor final: " + counter.getValue());
 			for (int i = 0; i < 4; i++) {
-			    //System.out.println("Hilo " + (i + 1) + " realizo " + counter_threads[i] + " operaciones");
+			    System.out.println("Hilo " + (i + 1) + " realizo " + counter_threads[i] + " operaciones");
 			}
 		} catch (InterruptedException e) {
 			System.out.println(e);

@@ -10,6 +10,7 @@ public class Peterson {
 		long id = currentThread.getId();
 		int i = (int) (id % 2);
 		int j = 1 - i;
+		while(flag[i]){};
 		flag[i] = true;
 		victim = i;
 		while (flag[j] && victim == i) {
