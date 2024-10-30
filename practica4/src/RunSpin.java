@@ -31,7 +31,7 @@ public class RunSpin {
 		try {
 			lock.lock();
 			increment();
-			Thread.sleep(2000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 		    e.printStackTrace();
 		 
@@ -42,9 +42,8 @@ public class RunSpin {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		List<Future<Integer>> futures = new ArrayList<Future<Integer>>();
-		int numberThreads = 4;
+		int numberThreads = 15;
 		ExecutorService executor = Executors.newFixedThreadPool(numberThreads);
 		// CounterAtomic counter = new CounterAtomic(); // Descomentar para probar el
 		// contador atomico
