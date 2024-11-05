@@ -31,7 +31,7 @@ public class SimpleSnapshot<T> implements Snapshot<T> {
         new StampedValue<T>((oldValue.stamp)+1, value);
     a_table[me] = newValue;
   }
-  private StampedValue<T>[] collect() {
+    public StampedValue<T>[] collect() {
     StampedValue<T>[] copy = (StampedValue<T>[]) new StampedValue[a_table.length];
     for (int j = 0; j < a_table.length; j++)
       copy[j] = a_table[j];
@@ -41,15 +41,15 @@ public class SimpleSnapshot<T> implements Snapshot<T> {
     StampedValue<T>[] oldCopy, newCopy;
     oldCopy = collect();
     collect: while (true) {
-      // newCopy = collect();
-      // if (! Arrays.equals(oldCopy, newCopy)) {
-      //   oldCopy = newCopy;
-      //   continue collect;
-      // }
-      // clean collect
+      newCopy = collect();
+      if (! Arrays.equals(oldCopy, newCopy)) {
+        oldCopy = newCopy;
+        continue collect;
+      }
+      //clean collect
       T[] result = (T[]) new Object[a_table.length];
       for (int j = 0; j < a_table.length; j++)
-        result[j] = newCopy[j].values;
+        result[j] = newCopy[j].value;
       return result;
     }
   }
