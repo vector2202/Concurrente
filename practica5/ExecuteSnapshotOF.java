@@ -42,21 +42,15 @@ public class ExecuteSnapshotOF {
 			
 	StampedValue<String>[] copy = (StampedValue<String>[]) new StampedValue[capacity];
 	copy = snapshotR.collect();
-	// StampedValue<String>[] collectedValues = snapshotR.collect();
-	// StampedValue<String>[] copy = new StampedValue[capacity];
 
-	// Convertir cada elemento explícitamente
-	// for (int i = 0; i < collectedValues.length; i++) {
-	// 	copy[i] = (StampedValue<String>) collectedValues[i];
-	// }
 
 	System.out.println("Snapshot Final --- Values");
 	for (int j = 0; j < capacity; j++) {
 	    System.out.println("\n Thread Owner: " + copy[j].owner +  
-			       " Last Stamp: " + copy[j].stamp + "Value: " + copy[j].value);
-	    // System.out.println("The values are: "); 
-	    // for (int i = 0; i < copy[j].value.length(); i++) { 
-	    // 	System.out.println(copy[j].snap[i]); }
+			       " Last Stamp: " + copy[j].stamp + " Size: " + copy[j].values.size());
+	    System.out.println("The values are: "); 
+	    for (int i = 0; i < copy[j].values.size(); i++) { 
+		System.out.println(copy[j].values.get(i)); }
 	    
 	}
     }

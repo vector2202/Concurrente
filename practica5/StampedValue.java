@@ -9,7 +9,8 @@
  * Copyright 2006 Elsevier Inc. All rights reserved.
  */
 
-
+import java.util.ArrayList;
+import java.util.List;
 /**
  * stamps for atomic MRMW register
  * @author Maurice Herlihy
@@ -27,6 +28,7 @@ public class StampedValue<T> {
    * Register value.
    */
   public T   value;
+    public List<T> values = new ArrayList<T>();
   /**
    * Least value ever.
    */
@@ -38,6 +40,12 @@ public class StampedValue<T> {
     this.stamp = stamp;
     this.owner = ThreadID.get();
     this.value = value;
+  }
+    public StampedValue(long stamp, T value, List<T> l) {
+    this.stamp = stamp;
+    this.owner = ThreadID.get();
+    this.value = value;
+    this.values = l;
   }
   /**
    * Constructor.
