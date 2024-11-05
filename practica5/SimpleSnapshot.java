@@ -42,16 +42,16 @@ public class SimpleSnapshot<T> implements Snapshot<T> {
     StampedValue<T>[] oldCopy, newCopy;
     oldCopy = collect();
     collect: while (true) {
-      // newCopy = collect();
+      newCopy = collect();
       // if (! Arrays.equals(oldCopy, newCopy)) {
       //   oldCopy = newCopy;
       //   continue collect;
       // }
-	newCopy = oldCopy;
+      newCopy = oldCopy;
       //clean collect
       T[] result = (T[]) new Object[a_table.length];
       for (int j = 0; j < a_table.length; j++)
-        result[j] = newCopy[j].value;
+	  result[j] = (T) newCopy[j].values;
       return result;
     }
   }
