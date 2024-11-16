@@ -20,7 +20,8 @@ public class CASConsensus<T> implements ConsensusProtocol<T>{
 
     public T decide(T value, int me){
         propose[me]=value;
-        if (r.compareAndSet(FIRST, me)) {
+	if(r.compareAndSet(FIRST, me)){
+	    //if (FIRST == r.getAndSet(me)) {
             //System.err.println("WIN " + me);
             return propose[me];
         } else {
